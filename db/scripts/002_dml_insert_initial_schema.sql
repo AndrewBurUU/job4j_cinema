@@ -34,24 +34,24 @@ insert into films(name, description, year, genre_id, minimal_age, duration_in_mi
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
 1, 3, CURRENT_DATE + TIME '10:00', CURRENT_DATE + TIME '12:00');
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-1, 3, CURRENT_DATE + TIME '12:30:00', CURRENT_DATE + TIME '14:30:00');
+1, 3, CURRENT_DATE + TIME '12:30', CURRENT_DATE + TIME '14:30');
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-1, 3, CURRENT_DATE + TIME '16:00:00', CURRENT_DATE + TIME '18:00:00');
+1, 3, CURRENT_DATE + TIME '16:00', CURRENT_DATE + TIME '18:00');
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-1, 3, CURRENT_DATE + TIME '18:00:00', CURRENT_DATE + TIME '20:00:00');
+1, 3, CURRENT_DATE + TIME '18:00', CURRENT_DATE + TIME '20:00');
 
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-2, 2, CURRENT_DATE + TIME '10:00:00', CURRENT_DATE + TIME '12:00:00');
+2, 2, CURRENT_DATE + TIME '10:00', CURRENT_DATE + TIME '12:00');
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-2, 2, CURRENT_DATE + TIME '12:30:00', CURRENT_DATE + TIME '14:30:00');
+2, 2, CURRENT_DATE + TIME '12:30', CURRENT_DATE + TIME '14:30');
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-2, 2, CURRENT_DATE + TIME '15:00:00', CURRENT_DATE + TIME '17:00:00');
+2, 2, CURRENT_DATE + TIME '15:00', CURRENT_DATE + TIME '17:00');
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-2, 2, CURRENT_DATE + TIME '19:00:00', CURRENT_DATE + TIME '21:00:00');
+2, 2, CURRENT_DATE + TIME '19:00', CURRENT_DATE + TIME '21:00');
 
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-3, 1, CURRENT_DATE + TIME '11:00:00', CURRENT_DATE + TIME '14:10:00');
+3, 1, CURRENT_DATE + TIME '11:00', CURRENT_DATE + TIME '14:10');
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-3, 1, CURRENT_DATE + TIME '15:00:00', CURRENT_DATE + TIME '18:10:00');
+3, 1, CURRENT_DATE + TIME '15:00', CURRENT_DATE + TIME '18:10');
 insert into film_sessions(film_id, halls_id, start_time, end_time) values(
-3, 1, CURRENT_DATE + TIME '19:00:00', CURRENT_DATE + TIME '22:10:00');
+3, 1, CURRENT_DATE + TIME '19:00', CURRENT_DATE + TIME '22:10');
