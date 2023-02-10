@@ -37,8 +37,8 @@ create table film_sessions
     id serial primary key,
     film_id int references films (id) not null,
     halls_id int references halls (id) not null,
-    start_time timestamp,
-    end_time timestamp
+    start_time time,
+    end_time time
 );
 
 create table users
