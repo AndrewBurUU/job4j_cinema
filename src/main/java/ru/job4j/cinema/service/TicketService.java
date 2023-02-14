@@ -1,10 +1,11 @@
-package ru.job4j.cinema.repository;
+package ru.job4j.cinema.service;
 
 import ru.job4j.cinema.model.Ticket;
 
-import java.util.*;
+import java.util.Optional;
+import java.util.Collection;
 
-public interface TicketRepository {
+public interface TicketService {
 
     Optional<Ticket> save(Ticket ticket);
 
@@ -15,5 +16,4 @@ public interface TicketRepository {
     Collection<Ticket> findTakenByRow(int row);
 
     Collection<Ticket> findOpenSeats();
-
 }

@@ -64,4 +64,9 @@ public class Sql2oTicketRepository implements TicketRepository {
             return query.executeAndFetch(Ticket.class);
         }
     }
+
+    @Override
+    public Collection<Ticket> findOpenSeats() {
+        return null;
+    }
 }
