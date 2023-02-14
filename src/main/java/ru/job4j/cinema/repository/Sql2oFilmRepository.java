@@ -2,6 +2,7 @@ package ru.job4j.cinema.repository;
 
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
+import ru.job4j.cinema.dto.*;
 import ru.job4j.cinema.model.Film;
 
 import java.util.Collection;
@@ -20,6 +21,15 @@ public class Sql2oFilmRepository implements FilmRepository {
         try (var connection = sql2o.open()) {
             var query = connection.createQuery("SELECT * FROM films");
             return query.executeAndFetch(Film.class);
+        }
+    }
+
+    public Collection<FilmDto> findAllDto() {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("select f.id, f.name, f.description, f.year, f.minimal_age, f.duration_in_minutes, g.name genre\n"
+                    + "from films f, genres g\n"
+                    + "where f.genre_id = g.id");
+            return query.executeAndFetch(FilmDto.class);
         }
     }
 

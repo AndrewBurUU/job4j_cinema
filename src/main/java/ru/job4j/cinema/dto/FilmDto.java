@@ -1,20 +1,17 @@
-package ru.job4j.cinema.model;
-
-import ru.job4j.cinema.dto.*;
+package ru.job4j.cinema.dto;
 
 import java.util.*;
 
-public class Film {
+public class FilmDto {
 
     public static final Map<String, String> COLUMN_MAPPING = Map.of(
             "id", "id",
             "name", "name",
             "description", "description",
             "year", "year",
-            "genre_id", "genreId",
             "minimal_age", "minimalAge",
             "duration_in_minutes", "durationInMinutes",
-            "file_id", "fileId"
+            "genre", "genre"
     );
 
     private int id;
@@ -25,30 +22,23 @@ public class Film {
 
     private int year;
 
-    private int genreId;
-
     private int minimalAge;
 
     private int durationInMinutes;
 
-    private int fileId;
+    private String genre;
 
-    public Film() {
+    public FilmDto() {
+
     }
 
-    /** checkstyle не дает создавать более 7 параметров в конструкторе, поэтому fileId отдельно */
-    public Film(int id, String name, String description, int year, int genreId, int minimalAge, int durationInMinutes) {
+    public FilmDto(int id, String description, int year, String genre, int minimalAge, int durationInMinutes) {
         this.id = id;
-        this.name = name;
         this.description = description;
         this.year = year;
-        this.genreId = genreId;
+        this.genre = genre;
         this.minimalAge = minimalAge;
         this.durationInMinutes = durationInMinutes;
-    }
-
-    public void setFileId(int fileId) {
-        this.fileId = fileId;
     }
 
     public int getId() {
@@ -67,10 +57,6 @@ public class Film {
         return year;
     }
 
-    public int getGenreId() {
-        return genreId;
-    }
-
     public int getMinimalAge() {
         return minimalAge;
     }
@@ -79,7 +65,21 @@ public class Film {
         return durationInMinutes;
     }
 
-    public int getFileId() {
-        return fileId;
+    public String getGenre() {
+        return genre;
     }
+
+    @Override
+    public String toString() {
+        return "FilmDto{"
+                + "id='" + id + '\''
+                + ", name='" + name + '\''
+                + ", description='" + description + '\''
+                + ", year=" + year
+                + ", minimalAge=" + minimalAge
+                + ", durationInMinutes=" + durationInMinutes
+                + ", genre=" + genre
+                + '}';
+    }
+
 }
