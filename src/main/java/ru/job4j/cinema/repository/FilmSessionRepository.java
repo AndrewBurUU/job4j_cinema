@@ -10,4 +10,6 @@ public interface FilmSessionRepository {
     Collection<FilmSession> findAll();
 
     Collection<SessionDto> findAllDto();
+
+    Optional<SessionDto> findById(int id);
 }

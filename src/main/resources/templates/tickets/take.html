@@ -20,8 +20,8 @@
                 <div class="navbar-nav me-auto">
                     <a class="nav-item nav-link" href="/">Главная</a>
                     <a class="nav-item nav-link" th:href="@{/films}">Фильмы</a>
-                    <a class="nav-item nav-link" th:href="@{/sessions}">Сеансы</a>
-                    <a class="nav-item nav-link active" th:href="@{/tickets/take}">Забронировать место</a>
+                    <a class="nav-item nav-link" th:href="@{/filmsessions}">Сеансы</a>
+                    <a class="nav-item nav-link active" th:href="@{/tickets}">Забронировать место</a>
                 </div>
                 <div class="d-flex" th:if="${user.name == 'Гость'}">
                     <a class="nav-link text-secondary me-3" th:href="@{/users/register}">Регистрация</a>
@@ -39,10 +39,14 @@
             <div class="row mb-3">
                 <div class="col-9">
                     <div class="mb-3">
-                        <label for="film"><b>Фильм</b></label>
-                        <select class="form-control" id="film" name="filmId">
-                            <option th:each="film : ${films}" th:value="${film.id}" th:text="${film.name}" th:field="*{filmId}" th:selected="${film.id==filmId}"></option>
+                        <label for="filmsession"><b>Фильм</b></label>
+                        <select class="form-control" id="filmsession" name="filmsessionId">
+                            <option th:each="filmsession : ${filmsessions}" th:value="${film.id}" th:text="${film.name}" th:field="*{filmId}" th:selected="${film.id==filmId}"></option>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="filmsessionName" class="form-label"><b>Фильм</b></label>
+                        <input type="text" class="form-control" id="filmsessionName" name="filmsessionName" placeholder="filmsessionName">
                     </div>
                     <div class="mb-3">
                         <label for="starttime"><b>Время сеанса</b></label>
@@ -51,16 +55,12 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="row"><b>Ряд</b></label>
-                        <select class="form-control" id="row" name="rowNumber">
-                            <option th:each="row : ${rows}" th:value="${row.id}" th:text="${row.num}" th:field="*{rowNumber}" th:selected="${row.id==rowNumber}"></option>
-                        </select>
+                        <label for="row" class="form-label"><b>Ряд</b></label>
+                        <input type="text" class="form-control" id="row" name="row" placeholder="номер ряда">
                     </div>
                     <div class="mb-3">
-                        <label for="seat"><b>Место</b></label>
-                        <select class="form-control" id="seat" name="seatNumber">
-                            <option th:each="seat : ${seats}" th:value="${seat.id}" th:text="${seat.num}" th:field="*{seatNumber}" th:selected="${seat.id==seatNumber}"></option>
-                        </select>
+                        <label for="seat" class="form-label"><b>Место</b></label>
+                        <input type="text" class="form-control" id="seat" name="seat" placeholder="номер места">
                     </div>
                 </div>
             </div>

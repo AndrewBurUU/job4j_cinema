@@ -26,10 +26,10 @@ public class Sql2oFilmRepository implements FilmRepository {
 
     public Collection<FilmDto> findAllDto() {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("select f.id, f.name, f.description, f.year, f.minimal_age, f.duration_in_minutes, g.name genre\n"
-                    + "from films f, genres g\n"
-                    + "where f.genre_id = g.id");
-            return query.executeAndFetch(FilmDto.class);
+            var query = connection.createQuery("SELECT f.id, f.name, f.description, f.year, f.minimal_age, f.duration_in_minutes, g.name genre\n"
+                    + "FROM films f, genres g\n"
+                    + "WHERE f.genre_id = g.id");
+            return query.setColumnMappings(FilmDto.COLUMN_MAPPING).executeAndFetch(FilmDto.class);
         }
     }
 

@@ -5,9 +5,7 @@ import ru.job4j.cinema.dto.*;
 import ru.job4j.cinema.model.FilmSession;
 
 import java.time.*;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MemoryFilmSessionRepository implements FilmSessionRepository {
 
@@ -36,5 +34,10 @@ public class MemoryFilmSessionRepository implements FilmSessionRepository {
     @Override
     public Collection<SessionDto> findAllDto() {
         return null;
+    }
+
+    @Override
+    public Optional<SessionDto> findById(int id) {
+        return Optional.empty();
     }
 }

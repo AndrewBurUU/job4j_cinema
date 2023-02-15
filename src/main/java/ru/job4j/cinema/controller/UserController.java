@@ -48,7 +48,7 @@ public class UserController {
         }
         var session = request.getSession();
         session.setAttribute("user", userOptional.get());
-        return "redirect:/sessions";
+        return "redirect:/filmsessions";
     }
 
     @GetMapping("/logout")

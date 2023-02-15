@@ -1,6 +1,5 @@
 package ru.job4j.cinema.dto;
 
-import java.sql.*;
 import java.time.*;
 import java.util.*;
 

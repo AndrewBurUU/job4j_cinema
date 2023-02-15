@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import ru.job4j.cinema.service.FilmSessionService;
 
 @Controller
-@RequestMapping("/sessions")
+@RequestMapping("/filmsessions")
 public class FilmSessionController {
 
     private final FilmSessionService filmSessionService;
@@ -19,8 +19,8 @@ public class FilmSessionController {
 
     @GetMapping
     public String getAllDto(Model model) {
-        model.addAttribute("sessions", filmSessionService.findAllDto());
-        return "sessions/list";
+        model.addAttribute("filmsessions", filmSessionService.findAllDto());
+        return "filmsessions/list";
     }
 
 }

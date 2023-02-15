@@ -24,7 +24,7 @@ public class Sql2oUserRepository implements UserRepository {
                       """;
             var query = connection.createQuery(sql, true)
                     .addParameter("email", user.getEmail())
-                    .addParameter("name", user.getFullName())
+                    .addParameter("name", user.getName())
                     .addParameter("password", user.getPassword());
             int generatedId = query.executeUpdate().getKey(Integer.class);
             user.setId(generatedId);
@@ -48,7 +48,7 @@ public class Sql2oUserRepository implements UserRepository {
     @Override
     public Optional<User> findByEmailAndPassword(String email, String password) {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM users WHERE email = :email and password = :password");
+            var query = connection.createQuery("SELECT id, full_name name, email, password FROM users WHERE email = :email and password = :password");
             query.addParameter("email", email)
                     .addParameter("password", password);
             var user = query.executeAndFetchFirst(User.class);
@@ -59,7 +59,7 @@ public class Sql2oUserRepository implements UserRepository {
     @Override
     public Optional<User> findById(int id) {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM users WHERE id = :id");
+            var query = connection.createQuery("SELECT id, full_name name, email, password FROM users WHERE id = :id");
             query.addParameter("id", id);
             var user = query.executeAndFetchFirst(User.class);
             return Optional.ofNullable(user);
@@ -69,7 +69,7 @@ public class Sql2oUserRepository implements UserRepository {
     @Override
     public Collection<User> findAll() {
         try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM users");
+            var query = connection.createQuery("SELECT id, full_name name, email, password FROM users");
             return query.executeAndFetch(User.class);
         }
     }

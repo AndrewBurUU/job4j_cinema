@@ -25,9 +25,21 @@ public class TicketController {
 
     @GetMapping("/take")
     public String getTakePage(Model model) {
-        model.addAttribute("films", filmService.findAll());
+        model.addAttribute("films", filmService.findAllDto());
         model.addAttribute("sessions", filmSessionService.findAllDto());
+        return "tickets/take";
+    }
+
+    @GetMapping("/{id}")
+    public String getById(Model model, @PathVariable int id) {
+        var filmSessionOptional = filmSessionService.findById(id);
+        if (filmSessionOptional.isEmpty()) {
+            model.addAttribute("message", "Вакансия с указанным идентификатором не найдена");
+            return "errors/404";
+        }
         model.addAttribute("rows", ticketService.findOpenRows());
+        model.addAttribute("seats", ticketService.findOpenSeats(1));
+        model.addAttribute("filmsession", filmSessionOptional.get());
         return "tickets/take";
     }
 
