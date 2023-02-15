@@ -38,7 +38,12 @@ public class SimpleTicketService implements TicketService {
     }
 
     @Override
-    public Collection<Ticket> findOpenSeats() {
-        return ticketRepository.findOpenSeats();
+    public Collection<Ticket> findOpenSeats(int row) {
+        return ticketRepository.findOpenSeats(row);
+    }
+
+    @Override
+    public Collection<Ticket> findOpenRows() {
+        return ticketRepository.findOpenRows();
     }
 }

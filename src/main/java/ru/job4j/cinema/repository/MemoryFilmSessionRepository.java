@@ -1,6 +1,7 @@
 package ru.job4j.cinema.repository;
 
 import org.springframework.stereotype.Repository;
+import ru.job4j.cinema.dto.*;
 import ru.job4j.cinema.model.FilmSession;
 
 import java.time.*;
@@ -8,7 +9,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-@Repository
 public class MemoryFilmSessionRepository implements FilmSessionRepository {
 
     private final Map<Integer, FilmSession> filmSessions = new HashMap<>() {
@@ -32,4 +32,9 @@ public class MemoryFilmSessionRepository implements FilmSessionRepository {
     public Collection<FilmSession> findAll() {
          return filmSessions.values();
         }
+
+    @Override
+    public Collection<SessionDto> findAllDto() {
+        return null;
+    }
 }

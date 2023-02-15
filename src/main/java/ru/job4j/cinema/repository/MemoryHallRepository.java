@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-@Repository
 public class MemoryHallRepository implements HallRepository {
 
     private final Map<Integer, Hall> halls = new HashMap<>() {

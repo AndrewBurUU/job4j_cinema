@@ -66,7 +66,13 @@ public class Sql2oTicketRepository implements TicketRepository {
     }
 
     @Override
-    public Collection<Ticket> findOpenSeats() {
+    public Collection<Ticket> findOpenSeats(int row) {
         return null;
     }
+
+    @Override
+    public Collection<Ticket> findOpenRows() {
+        return null;
+    }
+
 }

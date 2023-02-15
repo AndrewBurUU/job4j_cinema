@@ -3,7 +3,7 @@ package ru.job4j.cinema.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.job4j.cinema.dto.FileDto;
-import ru.job4j.cinema.repository.FileRepository;
+import ru.job4j.cinema.repository.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -17,7 +17,7 @@ public class SimpleFileService implements FileService {
 
     private final String storageDirectory;
 
-    public SimpleFileService(FileRepository sql2oFileRepository,
+    public SimpleFileService(Sql2oFileRepository sql2oFileRepository,
                              @Value("${file.directory}") String storageDirectory) {
         this.fileRepository = sql2oFileRepository;
         this.storageDirectory = storageDirectory;

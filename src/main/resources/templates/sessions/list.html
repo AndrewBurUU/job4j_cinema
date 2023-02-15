@@ -50,10 +50,10 @@
                 <tbody>
                 <tr th:each="session: ${sessions}">
                     <td th:text="${session.id}" />
-                    <td><a th:text="${session.name}" th:href="@{/sessions/{sessionId}(sessionId=${session.id})}"></a></td>
-                    <td th:text="${session.halls_id}"/>
-                    <td th:text="${session.start_time}"/>
-                    <td th:text="${session.end_time}"/>
+                    <td th:text="${session.filmname}"/>
+                    <td th:text="${session.hallname}"/>
+                    <td th:text="${session.startTime}"/>
+                    <td th:text="${session.endTime}"/>
                 </tr>
                 </tbody>
             </table>

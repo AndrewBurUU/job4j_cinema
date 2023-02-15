@@ -32,13 +32,14 @@ public class FilmDto {
 
     }
 
-    public FilmDto(int id, String description, int year, String genre, int minimalAge, int durationInMinutes) {
+    public FilmDto(int id, String name, String description, int year, int minimalAge, int durationInMinutes, String genre) {
         this.id = id;
+        this.name = name;
         this.description = description;
         this.year = year;
-        this.genre = genre;
         this.minimalAge = minimalAge;
         this.durationInMinutes = durationInMinutes;
+        this.genre = genre;
     }
 
     public int getId() {
@@ -82,4 +83,20 @@ public class FilmDto {
                 + '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FilmDto filmDto = (FilmDto) o;
+        return id == filmDto.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

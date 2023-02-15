@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-@Repository
 public class MemoryGenreRepository implements GenreRepository {
 
     private final Map<Integer, Genre> genres = new HashMap<>() {

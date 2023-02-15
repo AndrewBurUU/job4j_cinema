@@ -9,7 +9,6 @@ import java.util.Optional;
 import java.util.HashMap;
 import java.util.Map;
 
-@Repository
 public class MemoryFilmRepository implements FilmRepository {
 
     private final Map<Integer, Film> films = new HashMap<>() {

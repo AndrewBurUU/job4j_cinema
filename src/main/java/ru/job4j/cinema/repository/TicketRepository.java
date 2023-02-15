@@ -14,6 +14,8 @@ public interface TicketRepository {
 
     Collection<Ticket> findTakenByRow(int row);
 
-    Collection<Ticket> findOpenSeats();
+    Collection<Ticket> findOpenSeats(int row);
+
+    Collection<Ticket> findOpenRows();
 
 }

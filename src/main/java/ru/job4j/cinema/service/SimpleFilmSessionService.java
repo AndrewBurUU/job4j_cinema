@@ -1,6 +1,7 @@
 package ru.job4j.cinema.service;
 
 import org.springframework.stereotype.Service;
+import ru.job4j.cinema.dto.*;
 import ru.job4j.cinema.model.FilmSession;
 import ru.job4j.cinema.repository.FilmSessionRepository;
 
@@ -18,5 +19,10 @@ public class SimpleFilmSessionService implements FilmSessionService {
     @Override
     public Collection<FilmSession> findAll() {
         return filmSessionRepository.findAll();
+    }
+
+    @Override
+    public Collection<SessionDto> findAllDto() {
+        return filmSessionRepository.findAllDto();
     }
 }
