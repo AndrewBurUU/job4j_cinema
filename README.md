@@ -23,17 +23,17 @@
 2. Запустить приложение из класса Main.
 3. Запустить браузер и открыть главную страницу: '''http://localhost:8080/index'''
 
-## Взаимодействие с приложением (в разработке).
+## Взаимодействие с приложением.
 - Главная страница:
-![img_1.png](img_1.png)
+![img_1.png](img/img_1.png)
 - Афиша:
-![img_2.png](img_2.png)
+![img_2.png](img/img_2.png)
 - Сеансы:
-![img_3.png](img_3.png)
+![img_3.png](img/img_3.png)
 - Регистрация пользователя:
-![img.png](img.png)
+![img.png](img/img.png)
 - Бронирование билетов:
-![img_4.png](img_4.png)
+![img_4.png](img/img_4.png)
 
 ## Контакты:
 andrew76k@rambler.ru

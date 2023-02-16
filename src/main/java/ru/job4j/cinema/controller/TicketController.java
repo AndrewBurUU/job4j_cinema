@@ -34,21 +34,14 @@ public class TicketController {
             model.addAttribute("message", "Сеанс не найден");
             return "errors/404";
         }
-        var hallOptional = hallService.findByName(filmSessionOptional.get().getHallname());
+        var hallName = filmSessionOptional.get().getHallname();
+        var hallOptional = hallService.findByName(hallName);
         if (hallOptional.isEmpty()) {
             model.addAttribute("message", "Зал не найден");
             return "errors/404";
         }
-        List rowList = new ArrayList<>();
-        for (int i = 0; i < hallOptional.get().getRowCount(); i++) {
-            rowList.add(i + 1);
-        }
-        List placeList = new ArrayList<>();
-        for (int i = 0; i < hallOptional.get().getPlaceCount(); i++) {
-            placeList.add(i + 1);
-        }
-        model.addAttribute("rows", rowList);
-        model.addAttribute("places", placeList);
+        model.addAttribute("rows", hallService.getRowsByHallName(hallName));
+        model.addAttribute("places", hallService.getPlacesByHallName(hallName));
         model.addAttribute("filmsession", filmSessionOptional.get());
         return "tickets/create";
     }

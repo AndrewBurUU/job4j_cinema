@@ -3,7 +3,6 @@ package ru.job4j.cinema.controller;
 import org.junit.jupiter.api.*;
 import org.springframework.ui.ConcurrentModel;
 import ru.job4j.cinema.dto.*;
-import ru.job4j.cinema.model.*;
 import ru.job4j.cinema.service.*;
 
 import java.time.*;
@@ -12,7 +11,6 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.*;
 
-@Disabled
 class FilmSessionControllerTest {
 
     private FilmSessionService filmSessionService;
@@ -38,9 +36,9 @@ class FilmSessionControllerTest {
 
         var model = new ConcurrentModel();
         var view = filmSessionController.getAllDto(model);
-        var actualSessions = model.getAttribute("sessions");
+        var actualSessions = model.getAttribute("filmsessions");
 
-        assertThat(view).isEqualTo("sessions/list");
+        assertThat(view).isEqualTo("filmsessions/list");
         assertThat(actualSessions).isEqualTo(expectedSessions);
 
     }

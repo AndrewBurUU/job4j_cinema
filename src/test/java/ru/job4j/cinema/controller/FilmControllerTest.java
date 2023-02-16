@@ -10,7 +10,6 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.*;
 
-@Disabled
 class FilmControllerTest {
 
     private FilmService filmService;

@@ -47,32 +47,21 @@ public class Sql2oTicketRepository implements TicketRepository {
     }
 
     @Override
+    public Collection<Ticket> findAll() {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("SELECT * FROM tickets");
+            return query.setColumnMappings(Ticket.COLUMN_MAPPING).executeAndFetch(Ticket.class);
+        }
+   }
+
+    @Override
     public Optional<Ticket> findById(int id) {
         try (var connection = sql2o.open()) {
             var query = connection.createQuery("SELECT * FROM tickets WHERE id = :id");
             query.addParameter("id", id);
-            var user = query.executeAndFetchFirst(Ticket.class);
+            var user = query.setColumnMappings(Ticket.COLUMN_MAPPING).executeAndFetchFirst(Ticket.class);
             return Optional.ofNullable(user);
         }
-    }
-
-    @Override
-    public Collection<Ticket> findTakenByRow(int row) {
-        try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT * FROM tickets WHERE row_number = :row_number");
-            query.addParameter("row_number", row);
-            return query.executeAndFetch(Ticket.class);
-        }
-    }
-
-    @Override
-    public Collection<Ticket> findOpenSeats(int row) {
-        return null;
-    }
-
-    @Override
-    public Collection<Ticket> findOpenRows() {
-        return null;
     }
 
 }

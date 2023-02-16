@@ -35,7 +35,8 @@
         </div>
     </nav>
     <div class="container">
-        <h3 class="mt-3">Билет забронирован</h3>
+        <h3 class="mt-3">Вы успешно забронировали место!</h3>
+        <td class="col_name" th:text="'Ряд: ' + ${ticket.rowNumber} + '. Место: ' + ${ticket.placeNumber}"></td>
     </div>
 </div>
 </body>

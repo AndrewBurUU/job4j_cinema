@@ -51,4 +51,21 @@ public class FilmSession {
     public LocalDateTime getEndTime() {
         return endTime;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FilmSession session = (FilmSession) o;
+        return id == session.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

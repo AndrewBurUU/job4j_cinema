@@ -33,8 +33,4 @@ public class Sql2oFilmRepository implements FilmRepository {
         }
     }
 
-    @Override
-    public Optional<Film> findById(int id) {
-        return Optional.empty();
-    }
 }

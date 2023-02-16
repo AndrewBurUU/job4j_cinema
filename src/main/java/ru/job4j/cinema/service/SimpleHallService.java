@@ -29,4 +29,22 @@ public class SimpleHallService implements HallService {
     public Optional<Hall> findByName(String name) {
         return hallRepository.findByName(name);
     }
+
+    @Override
+    public List getRowsByHallName(String name) {
+        List rows = new ArrayList<>();
+        for (int i = 0; i < hallRepository.findByName(name).get().getRowCount(); i++) {
+            rows.add(i + 1);
+        }
+        return rows;
+    }
+
+    @Override
+    public List getPlacesByHallName(String name) {
+        List places = new ArrayList<>();
+        for (int i = 0; i < hallRepository.findByName(name).get().getPlaceCount(); i++) {
+            places.add(i + 1);
+        }
+        return places;
+    }
 }

@@ -11,4 +11,8 @@ public interface HallService {
     Optional<Hall> findById(int id);
 
     Optional<Hall> findByName(String name);
+
+    List getRowsByHallName(String name);
+
+    List getPlacesByHallName(String name);
 }

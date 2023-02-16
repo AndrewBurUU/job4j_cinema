@@ -10,12 +10,8 @@ public interface TicketRepository {
 
     boolean deleteById(int id);
 
+    Collection<Ticket> findAll();
+
     Optional<Ticket> findById(int id);
-
-    Collection<Ticket> findTakenByRow(int row);
-
-    Collection<Ticket> findOpenSeats(int row);
-
-    Collection<Ticket> findOpenRows();
 
 }

@@ -11,5 +11,4 @@ public interface FilmRepository {
 
     Collection<FilmDto> findAllDto();
 
-    Optional<Film> findById(int id);
 }
