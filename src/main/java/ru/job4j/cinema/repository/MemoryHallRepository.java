@@ -3,9 +3,7 @@ package ru.job4j.cinema.repository;
 import org.springframework.stereotype.Repository;
 import ru.job4j.cinema.model.Hall;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class MemoryHallRepository implements HallRepository {
 
@@ -20,5 +18,15 @@ public class MemoryHallRepository implements HallRepository {
     @Override
     public Collection<Hall> findAll() {
         return halls.values();
+    }
+
+    @Override
+    public Optional<Hall> findById(int id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<Hall> findByName(String name) {
+        return Optional.empty();
     }
 }

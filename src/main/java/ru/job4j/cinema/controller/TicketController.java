@@ -7,51 +7,61 @@ import org.springframework.web.bind.annotation.*;
 import ru.job4j.cinema.model.Ticket;
 import ru.job4j.cinema.service.*;
 
+import java.util.*;
+
 @Controller
 @RequestMapping("/tickets")
 public class TicketController {
 
     private final TicketService ticketService;
 
-    private final FilmService filmService;
-
     private final FilmSessionService filmSessionService;
 
-    public TicketController(TicketService ticketService, FilmService filmService, FilmSessionService filmSessionService) {
-        this.ticketService = ticketService;
-        this.filmService = filmService;
-        this.filmSessionService = filmSessionService;
-    }
+    private final HallService hallService;
 
-    @GetMapping("/take")
-    public String getTakePage(Model model) {
-        model.addAttribute("films", filmService.findAllDto());
-        model.addAttribute("sessions", filmSessionService.findAllDto());
-        return "tickets/take";
+    public TicketController(TicketService ticketService,
+                            FilmSessionService filmSessionService,
+                            HallService hallService) {
+        this.ticketService = ticketService;
+        this.filmSessionService = filmSessionService;
+        this.hallService = hallService;
     }
 
     @GetMapping("/{id}")
     public String getById(Model model, @PathVariable int id) {
         var filmSessionOptional = filmSessionService.findById(id);
         if (filmSessionOptional.isEmpty()) {
-            model.addAttribute("message", "Вакансия с указанным идентификатором не найдена");
+            model.addAttribute("message", "Сеанс не найден");
             return "errors/404";
         }
-        model.addAttribute("rows", ticketService.findOpenRows());
-        model.addAttribute("seats", ticketService.findOpenSeats(1));
+        var hallOptional = hallService.findByName(filmSessionOptional.get().getHallname());
+        if (hallOptional.isEmpty()) {
+            model.addAttribute("message", "Зал не найден");
+            return "errors/404";
+        }
+        List rowList = new ArrayList<>();
+        for (int i = 0; i < hallOptional.get().getRowCount(); i++) {
+            rowList.add(i + 1);
+        }
+        List placeList = new ArrayList<>();
+        for (int i = 0; i < hallOptional.get().getPlaceCount(); i++) {
+            placeList.add(i + 1);
+        }
+        model.addAttribute("rows", rowList);
+        model.addAttribute("places", placeList);
         model.addAttribute("filmsession", filmSessionOptional.get());
-        return "tickets/take";
+        return "tickets/create";
     }
 
-    @PostMapping("/take")
-    public String take(@ModelAttribute Ticket ticket, Model model) {
+    @PostMapping("/create")
+    public String create(@ModelAttribute Ticket ticket, Model model) {
         try {
-            var isTaken = ticketService.save(ticket).isPresent();
-            if (isTaken) {
+            var ticketOptional = ticketService.save(ticket);
+            if (ticketOptional.isEmpty()) {
                 model.addAttribute("message", "Билет уже забронирован. Выберите другое место.");
                 return "errors/404";
             }
-            return "redirect:/tickets/taken";
+            return "tickets/taken";
         } catch (Exception exception) {
             model.addAttribute("message", exception.getMessage());
             return "errors/404";

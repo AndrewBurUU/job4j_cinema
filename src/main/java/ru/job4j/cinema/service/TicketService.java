@@ -18,4 +18,5 @@ public interface TicketService {
     Collection<Ticket> findOpenSeats(int row);
 
     Collection<Ticket> findOpenRows();
+
 }

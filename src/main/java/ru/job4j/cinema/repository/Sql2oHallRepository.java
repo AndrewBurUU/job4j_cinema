@@ -3,9 +3,10 @@ package ru.job4j.cinema.repository;
 
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
+import ru.job4j.cinema.dto.*;
 import ru.job4j.cinema.model.Hall;
 
-import java.util.Collection;
+import java.util.*;
 
 @Repository
 public class Sql2oHallRepository implements HallRepository {
@@ -21,6 +22,26 @@ public class Sql2oHallRepository implements HallRepository {
         try (var connection = sql2o.open()) {
             var query = connection.createQuery("SELECT * FROM halls");
             return query.executeAndFetch(Hall.class);
+        }
+    }
+
+    @Override
+    public Optional<Hall> findById(int id) {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("SELECT * FROM halls WHERE id = :id");
+            query.addParameter("id", id);
+            var hall = query.setColumnMappings(Hall.COLUMN_MAPPING).executeAndFetchFirst(Hall.class);
+            return Optional.ofNullable(hall);
+        }
+    }
+
+    @Override
+    public Optional<Hall> findByName(String name) {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("SELECT * FROM halls WHERE name = :name");
+            query.addParameter("name", name);
+            var hall = query.setColumnMappings(Hall.COLUMN_MAPPING).executeAndFetchFirst(Hall.class);
+            return Optional.ofNullable(hall);
         }
     }
 }
