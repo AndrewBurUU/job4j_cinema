@@ -36,4 +36,4 @@
 ![img_4.png](img/img_4.png)
 
 ## Контакты:
-andrew76k@rambler.ru
+mymail@gmail.com
