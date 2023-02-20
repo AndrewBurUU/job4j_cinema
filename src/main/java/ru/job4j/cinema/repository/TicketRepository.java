@@ -13,5 +13,4 @@ public interface TicketRepository {
     Collection<Ticket> findAll();
 
     Optional<Ticket> findById(int id);
-
 }

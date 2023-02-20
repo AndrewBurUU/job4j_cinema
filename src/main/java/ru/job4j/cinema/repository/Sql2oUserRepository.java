@@ -36,16 +36,6 @@ public class Sql2oUserRepository implements UserRepository {
     }
 
     @Override
-    public boolean deleteById(int id) {
-        try (var connection = sql2o.open()) {
-            var query = connection.createQuery("DELETE FROM users WHERE id = :id");
-            query.addParameter("id", id);
-            var affectedRows = query.executeUpdate().getResult();
-            return affectedRows > 0;
-        }
-    }
-
-    @Override
     public Optional<User> findByEmailAndPassword(String email, String password) {
         try (var connection = sql2o.open()) {
             var query = connection.createQuery("SELECT id, full_name name, email, password FROM users WHERE email = :email and password = :password");
@@ -56,21 +46,4 @@ public class Sql2oUserRepository implements UserRepository {
         }
     }
 
-    @Override
-    public Optional<User> findById(int id) {
-        try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT id, full_name name, email, password FROM users WHERE id = :id");
-            query.addParameter("id", id);
-            var user = query.executeAndFetchFirst(User.class);
-            return Optional.ofNullable(user);
-        }
-    }
-
-    @Override
-    public Collection<User> findAll() {
-        try (var connection = sql2o.open()) {
-            var query = connection.createQuery("SELECT id, full_name name, email, password FROM users");
-            return query.executeAndFetch(User.class);
-        }
-    }
 }

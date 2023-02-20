@@ -8,11 +8,6 @@ public interface UserRepository {
 
     Optional<User> save(User user);
 
-    boolean deleteById(int id);
-
     Optional<User> findByEmailAndPassword(String email, String password);
 
-    Optional<User> findById(int id);
-
-    Collection<User> findAll();
 }

@@ -36,7 +36,7 @@ class Sql2oTicketRepositoryTest {
     }
 
     @AfterEach
-    public void clearVacancies() {
+    public void clearTickets() {
         var tickets = sql2oTicketRepository.findAll();
         for (var ticket : tickets) {
             sql2oTicketRepository.deleteById(ticket.getId());

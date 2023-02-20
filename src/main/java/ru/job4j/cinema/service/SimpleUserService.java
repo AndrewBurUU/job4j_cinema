@@ -23,22 +23,8 @@ public class SimpleUserService implements UserService {
     }
 
     @Override
-    public boolean deleteById(int id) {
-        return userRepository.deleteById(id);
-    }
-
-    @Override
     public Optional<User> findByEmailAndPassword(String email, String password) {
         return userRepository.findByEmailAndPassword(email, password);
     }
 
-    @Override
-    public Optional<User> findById(int id) {
-        return userRepository.findById(id);
-    }
-
-    @Override
-    public Collection<User> findAll() {
-        return userRepository.findAll();
-    }
 }

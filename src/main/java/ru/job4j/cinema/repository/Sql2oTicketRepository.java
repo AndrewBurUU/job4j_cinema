@@ -52,7 +52,7 @@ public class Sql2oTicketRepository implements TicketRepository {
             var query = connection.createQuery("SELECT * FROM tickets");
             return query.setColumnMappings(Ticket.COLUMN_MAPPING).executeAndFetch(Ticket.class);
         }
-   }
+    }
 
     @Override
     public Optional<Ticket> findById(int id) {
@@ -63,5 +63,4 @@ public class Sql2oTicketRepository implements TicketRepository {
             return Optional.ofNullable(user);
         }
     }
-
 }
